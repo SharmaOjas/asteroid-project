@@ -10,7 +10,6 @@ import seaborn as sns
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import accuracy_score, precision_score, recall_score
-from prophet import Prophet
 import plotly.express as px
 
 # ----------------------- App Config -----------------------
@@ -82,15 +81,7 @@ def train_model(data):
     return model
 
 # ----------------------- Forecast Function -----------------------
-def forecast_neo_trend(df):
-    df['date'] = pd.to_datetime(df['date'])
-    df = df.rename(columns={"date": "ds", "count": "y"})
-    model = Prophet()
-    model.fit(df)
-    future = model.make_future_dataframe(periods=7)
-    forecast = model.predict(future)
-    fig = px.line(forecast, x='ds', y='yhat', title="📈 Asteroid Forecast (Next 7 Days)")
-    st.plotly_chart(fig, use_container_width=True)
+
 
 # ----------------------- Sidebar -----------------------
 with st.sidebar:
@@ -211,4 +202,4 @@ elif page == "Weekly Report":
 
 # ----------------------- Footer -----------------------
 st.sidebar.markdown("---")
-st.sidebar.markdown("Built with 💫 [NASA NEO API](https://api.nasa.gov/) + Prophet + Scikit-learn")
+st.sidebar.markdown("Built with 💫 [NASA NEO API](https://api.nasa.gov/) + Scikit-learn")
