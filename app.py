@@ -171,7 +171,7 @@ elif page == "Forecast":
 
 # Weekly Report
 elif page == "Weekly Report":
-    st.subheader("🔢 Weekly Asteroid Hazard Summary")
+    st.subheader("Weekly Asteroid Hazard Summary")
     df = st.session_state.detailed_data
     if df is not None:
         df["date"] = pd.to_datetime(df["date"])
@@ -188,11 +188,11 @@ elif page == "Weekly Report":
         fastest_speed = df["speed_km_h"].max()
 
         st.markdown(f"""
-        ## 🌍 Weekly Earth vs Asteroids Report
-        - 🪐 **{int(total_asteroids)}** asteroids flew near Earth this week  
-        - 🚨 **{int(hazardous_count)}** were *potentially hazardous*  
-        - 🛸 Closest approach was just **{closest_miss:,.0f} km**  
-        - ⚡ Fastest asteroid zipped by at **{fastest_speed:,.0f} km/h**
+        ## Weekly Earth vs Asteroids Report
+        - **{int(total_asteroids)}** asteroids flew near Earth this week  
+        - **{int(hazardous_count)}** were *potentially hazardous*  
+        - Closest approach was just **{closest_miss:,.0f} km**  
+        - Fastest asteroid zipped by at **{fastest_speed:,.0f} km/h**
         """)
 
         st.markdown("---")
